@@ -334,6 +334,27 @@
   footer strong{color:#f4ead0; font-family:'Fraunces',serif;}
   footer .fnote{margin-top:8px; opacity:.7; font-size:.8rem;}
 
+  /* ---------- HERO: emblema flotante ---------- */
+  .hero-emblem{
+    position:absolute; z-index:2; right:7%; top:38%; transform:translateY(-50%);
+    width:clamp(150px,21vw,300px); pointer-events:none;
+    opacity:0; filter:blur(16px);
+    transition:opacity 1.2s var(--ease), filter 1.2s var(--ease);
+  }
+  .hero-emblem.in{opacity:1; filter:blur(0);}
+  .hero-emblem::before{
+    content:''; position:absolute; inset:-30%; z-index:-1;
+    background:radial-gradient(circle at 50% 46%, rgba(244,200,105,.55), rgba(217,142,43,.18) 46%, transparent 72%);
+    filter:blur(22px);
+  }
+  .he-par{display:block; will-change:transform;}
+  .hero-emblem img{
+    width:100%; height:auto; display:block;
+    filter:drop-shadow(0 12px 26px rgba(18,12,3,.45));
+    animation:beeFloat 6.5s ease-in-out infinite;
+  }
+  @keyframes beeFloat{0%,100%{transform:translateY(0) rotate(-1.2deg);} 50%{transform:translateY(-16px) rotate(1.6deg);}}
+
   /* ---------- SCROLLYTELLING: hilo de miel (progress) ---------- */
   .scroll-thread{
     position:fixed; top:0; left:0; height:3px; z-index:200; width:0;
@@ -409,6 +430,7 @@
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:860px){
     .nav-links{display:none;}
+    .hero-emblem{display:none;}
     .mision-grid{grid-template-columns:1fr;}
     .abejas-grid{grid-template-columns:repeat(2,1fr);}
     .miel-block{grid-template-columns:1fr; gap:30px;}
@@ -450,6 +472,8 @@
     .scroll-fill .w{color:#f6ecd4;}
     .clip-reveal{clip-path:none;}
     .r-step{opacity:1; transform:none;}
+    .hero-emblem{opacity:1; filter:none;}
+    .hero-emblem img{animation:none;}
   }
 </style>
 </head>
@@ -482,6 +506,9 @@
 <section class="hero" id="top">
   <div class="hero-bg" id="heroBg">
     <img src="assets/hero-santuario.webp" alt="Rancho santuario de abejas Apiyauya al amanecer, con colmenas entre vegetación tropical en Medellín de Bravo, Veracruz" fetchpriority="high" width="1672" height="941">
+  </div>
+  <div class="hero-emblem" id="heroEmblem" aria-hidden="true">
+    <span class="he-par"><img src="assets/emblema-abeja.webp" alt="" width="624" height="372"></span>
   </div>
   <div class="hero-inner">
     <span class="eyebrow liquid-glass">🐝 Medellín de Bravo, Veracruz</span>
@@ -778,12 +805,18 @@
   addEventListener('load', sweep);
   sweep();
 
-  /* hero parallax sutil */
+  /* hero parallax sutil + emblema flotante */
   const heroBg = document.getElementById('heroBg');
-  if(heroBg && !reduce){
+  const heroEmblem = document.getElementById('heroEmblem');
+  const hePar = heroEmblem ? heroEmblem.querySelector('.he-par') : null;
+  if(heroEmblem){ addEventListener('load', ()=>heroEmblem.classList.add('in')); setTimeout(()=>heroEmblem.classList.add('in'), 220); }
+  if(!reduce){
     addEventListener('scroll', ()=>{
       const y = scrollY;
-      if(y < innerHeight) heroBg.style.transform = 'translateY('+(y*0.28)+'px)';
+      if(y < innerHeight){
+        if(heroBg) heroBg.style.transform = 'translateY('+(y*0.28)+'px)';
+        if(hePar) hePar.style.transform = 'translateY('+(y*-0.12)+'px)';
+      }
     }, {passive:true});
   }
 
