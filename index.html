@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apiyauya — Santuario de abejas y permacultura en Veracruz</title>
+<meta name="description" content="Apiyauya —'protectores de las abejas' en huichol— es un rancho de permacultura en Medellín de Bravo, Veracruz: rescate de abejas nativas, miel medicinal de melipona y educación ambiental para la comunidad.">
+<link rel="canonical" href="https://gamalabs26.github.io/apiyauya/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Apiyauya — Santuario de abejas, Veracruz">
+<meta property="og:description" content="Rescate de abejas nativas, miel medicinal de melipona y educación ambiental en un rancho de permacultura de Medellín de Bravo, Veracruz.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gamalabs26.github.io/apiyauya/">
+<meta property="og:image" content="https://gamalabs26.github.io/apiyauya/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_MX">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Apiyauya — Santuario de abejas, Veracruz">
+<meta name="twitter:description" content="Rescate de abejas nativas, miel medicinal de melipona y educación ambiental en Veracruz.">
+<meta name="twitter:image" content="https://gamalabs26.github.io/apiyauya/assets/og-image.jpg">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%9D%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":["LocalBusiness","NGO"],
+  "name":"Apiyauya",
+  "description":"Rancho de permacultura y santuario de abejas: rescate de abejas nativas, miel medicinal de melipona y educación ambiental.",
+  "slogan":"Protectores de las abejas",
+  "areaServed":"Veracruz, Boca del Río y Medellín de Bravo",
+  "address":{"@type":"PostalAddress","addressLocality":"Medellín de Bravo","addressRegion":"Veracruz","addressCountry":"MX","streetAddress":"Comunidad Juan Alfaro"},
+  "telephone":"+522291614789",
+  "email":"apiyauya@hotmail.com",
+  "sameAs":["https://www.instagram.com/apiyauya","https://www.facebook.com/Apiyauya/"]
+}
+</script>
+
+<style>
+  :root{
+    --miel-oscura:#8a4b12;
+    --miel:#d98e2b;
+    --miel-clara:#f4c869;
+    --ambar-bg:#fdf6e8;
+    --verde-tierra:#3f5a3d;
+    --verde-oscuro:#22301e;
+    --panal:#fff2d6;
+    --texto:#2c2418;
+    --texto-suave:#5b5142;
+    --ease:cubic-bezier(.16,.8,.3,1);
+    font-size:16px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Nunito Sans', sans-serif;
+    color:var(--texto);
+    background:var(--ambar-bg);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Fraunces', serif; font-weight:600; line-height:1.14;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .container{max-width:1120px; margin:0 auto; padding:0 24px;}
+
+  /* ---------- GRAIN GLOBAL ---------- */
+  .grain{
+    position:fixed; inset:0; z-index:1; pointer-events:none;
+    opacity:.05; mix-blend-mode:soft-light;
+  }
+
+  /* ---------- LIQUID GLASS ---------- */
+  .liquid-glass{
+    background:rgba(255,255,255,0.04);
+    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+    box-shadow:inset 0 1px 1px rgba(255,255,255,0.14);
+    position:relative; overflow:hidden;
+  }
+  .liquid-glass::before{
+    content:''; position:absolute; inset:0; border-radius:inherit; padding:1.4px;
+    background:linear-gradient(180deg,
+      rgba(255,255,255,.55) 0%, rgba(255,255,255,.18) 22%,
+      rgba(255,255,255,0) 42%, rgba(255,255,255,0) 60%,
+      rgba(255,255,255,.18) 80%, rgba(255,255,255,.5) 100%);
+    -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(253,246,232,0.82);
+    backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(138,75,18,0.10);
+    transition:box-shadow .3s var(--ease);
+  }
+  header.scrolled{box-shadow:0 6px 26px rgba(60,40,10,0.10);}
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:15px 24px; max-width:1120px; margin:0 auto;
+  }
+  .logo{font-family:'Fraunces', serif; font-size:1.42rem; font-weight:600; color:var(--miel-oscura); letter-spacing:.01em;}
+  .logo span{color:var(--verde-tierra); font-style:italic; font-weight:500; font-size:.98rem;}
+  .nav-links{display:flex; gap:30px; font-weight:700; font-size:.9rem;}
+  .nav-links a{opacity:.78; transition:opacity .2s, color .2s; position:relative;}
+  .nav-links a::after{content:''; position:absolute; left:0; bottom:-5px; width:0; height:2px; background:var(--miel); transition:width .3s var(--ease);}
+  .nav-links a:hover{opacity:1; color:var(--miel-oscura);}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    color:#fff; padding:11px 24px; border-radius:100px;
+    font-weight:800; font-size:.86rem;
+    background:linear-gradient(135deg, var(--verde-tierra), var(--verde-oscuro));
+    transition:transform .28s var(--ease), box-shadow .28s;
+    box-shadow:0 8px 20px -8px rgba(34,48,30,.6);
+  }
+  .nav-cta:hover{transform:translateY(-2px); box-shadow:0 12px 24px -8px rgba(34,48,30,.7);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; min-height:100svh; display:flex; align-items:flex-end;
+    padding:120px 0 8vh; overflow:hidden; color:#fff;
+  }
+  .hero-bg{position:absolute; inset:-8% 0 0 0; z-index:0; will-change:transform;}
+  .hero-bg img{width:100%; height:112%; object-fit:cover;}
+  .hero::after{
+    content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:
+      linear-gradient(to top, rgba(20,28,14,.86) 0%, rgba(20,28,14,.5) 34%, rgba(20,28,14,.12) 62%, rgba(30,22,8,.28) 100%),
+      radial-gradient(ellipse 60% 50% at 75% 8%, rgba(217,142,43,.28), transparent 60%);
+  }
+  .hero-inner{position:relative; z-index:2; width:100%; max-width:1120px; margin:0 auto; padding:0 24px;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:9px; color:#fff;
+    padding:8px 17px; border-radius:100px; font-weight:800; font-size:.76rem;
+    letter-spacing:.09em; text-transform:uppercase; margin-bottom:22px;
+    border-radius:100px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 6.4vw, 5rem); color:#fff; max-width:15ch;
+    text-shadow:0 3px 30px rgba(0,0,0,.35); margin-bottom:22px; font-weight:600;
+  }
+  .hero h1 em{font-style:italic; color:var(--miel-clara);}
+  .hero p.lead{
+    font-size:clamp(1.02rem,1.5vw,1.24rem); color:rgba(255,255,255,.9); max-width:56ch; margin-bottom:34px;
+    text-shadow:0 2px 16px rgba(0,0,0,.4);
+  }
+  .hero-ctas{display:flex; gap:15px; flex-wrap:wrap; align-items:center;}
+  .scroll-cue{
+    position:absolute; bottom:22px; left:50%; transform:translateX(-50%); z-index:2;
+    color:rgba(255,255,255,.7); font-size:.72rem; letter-spacing:.2em; text-transform:uppercase;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+  }
+  .scroll-cue::after{content:''; width:1px; height:34px; background:linear-gradient(rgba(255,255,255,.8), transparent); animation:cue 1.8s var(--ease) infinite;}
+  @keyframes cue{0%{transform:scaleY(.3); transform-origin:top; opacity:0;}40%{opacity:1;}100%{transform:scaleY(1); transform-origin:top; opacity:0;}}
+
+  /* ---------- BOTONES ---------- */
+  .btn-primary{
+    background:var(--miel-oscura); color:#fff; padding:16px 30px; border-radius:100px;
+    font-weight:800; display:inline-flex; align-items:center; gap:10px; font-size:.98rem;
+    transition:transform .25s var(--ease), box-shadow .25s, background .25s;
+    box-shadow:0 12px 30px -10px rgba(138,75,18,.7);
+  }
+  .btn-primary:hover{background:#a0591a; box-shadow:0 18px 38px -10px rgba(138,75,18,.8);}
+  .btn-secondary{
+    color:#fff; padding:15px 27px; border-radius:100px; font-weight:700; font-size:.96rem;
+  }
+  .btn-secondary.liquid-glass:hover{background:rgba(255,255,255,.12);}
+  .btn-secondary, .nav-cta, .btn-primary{will-change:transform;}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:clamp(76px,10vw,128px) 0; position:relative; z-index:2;}
+  .section-tag{color:var(--miel-oscura); font-weight:800; text-transform:uppercase; letter-spacing:.1em; font-size:.78rem; margin-bottom:14px; display:inline-block;}
+  .section-head{max-width:660px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(1.95rem, 3.6vw, 2.9rem); color:var(--verde-oscuro);}
+  .section-head p{color:var(--texto-suave); margin-top:16px; font-size:1.07rem;}
+
+  /* reveal */
+  .reveal-up{opacity:0; transform:translateY(34px); transition:opacity .9s var(--ease), transform .9s var(--ease);}
+  .reveal-up.in{opacity:1; transform:translateY(0);}
+
+  /* blur-in por palabra */
+  .blur-lines .word{display:inline-block; opacity:0; filter:blur(12px); transform:translateY(38px); transition:opacity .7s var(--ease), filter .7s var(--ease), transform .7s var(--ease); white-space:pre;}
+  .blur-lines.in .word{opacity:1; filter:blur(0); transform:translateY(0);}
+
+  /* ---------- MISIÓN ---------- */
+  .mision{background:var(--panal);}
+  .mision .mision-text{max-width:720px; margin-bottom:52px;}
+  .mision .mision-text .note{margin-top:18px; font-size:.96rem; color:var(--texto-suave); font-style:italic; border-left:3px solid var(--miel); padding-left:16px;}
+  .mision-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .card{
+    background:#fff; border-radius:22px; padding:34px 28px;
+    box-shadow:0 18px 40px -22px rgba(60,40,10,.3);
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+    will-change:transform;
+  }
+  .card:hover{box-shadow:0 26px 50px -20px rgba(60,40,10,.4);}
+  .card .icon{
+    width:56px; height:56px; border-radius:16px; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, var(--miel-clara), var(--miel)); font-size:1.6rem; margin-bottom:20px;
+    box-shadow:0 8px 18px -8px rgba(217,142,43,.7);
+  }
+  .card h3{font-size:1.22rem; color:var(--verde-oscuro); margin-bottom:10px;}
+  .card p{color:var(--texto-suave); font-size:.97rem;}
+
+  /* ---------- LAS ABEJAS (spotlight) ---------- */
+  .abejas{background:var(--ambar-bg);}
+  .abejas-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:64px;}
+  .abeja-card{
+    border:1.5px solid rgba(138,75,18,.18); border-radius:18px; padding:26px 20px; text-align:center;
+    background:#fff; transition:border-color .3s, transform .3s var(--ease), box-shadow .3s;
+  }
+  .abeja-card:hover{border-color:var(--miel); box-shadow:0 16px 34px -20px rgba(138,75,18,.5);}
+  .abeja-card .num{font-family:'Fraunces',serif; font-size:1.9rem; color:var(--miel); font-weight:600;}
+  .abeja-card h4{margin-top:8px; font-size:1.02rem; color:var(--verde-oscuro);}
+  .abeja-card p{font-size:.84rem; color:var(--texto-suave); margin-top:6px; font-style:italic;}
+
+  .spotlight-wrap{
+    position:relative; border-radius:26px; overflow:hidden; aspect-ratio:16/9;
+    box-shadow:0 30px 70px -30px rgba(34,48,30,.7); cursor:crosshair; isolation:isolate;
+  }
+  .spot-layer{position:absolute; inset:0; background-size:cover; background-position:center;}
+  .spot-base{background-image:var(--melipona); filter:brightness(.42) saturate(.7) contrast(.95);}
+  .spot-base::after{content:''; position:absolute; inset:0; background:radial-gradient(circle at 50% 40%, transparent, rgba(16,22,10,.55));}
+  .spot-reveal{
+    background-image:var(--melipona); filter:brightness(1.08) saturate(1.16);
+    -webkit-mask-image:radial-gradient(circle 190px at var(--mx,-500px) var(--my,-500px), #000 0%, #000 38%, rgba(0,0,0,.65) 58%, rgba(0,0,0,.2) 74%, transparent 84%);
+    mask-image:radial-gradient(circle 190px at var(--mx,-500px) var(--my,-500px), #000 0%, #000 38%, rgba(0,0,0,.65) 58%, rgba(0,0,0,.2) 74%, transparent 84%);
+  }
+  .spot-hint{
+    position:absolute; z-index:3; left:0; right:0; bottom:0; padding:34px 30px 26px; color:#fff;
+    background:linear-gradient(to top, rgba(16,22,10,.8), transparent);
+    display:flex; align-items:flex-end; justify-content:space-between; gap:20px; flex-wrap:wrap;
+  }
+  .spot-hint strong{font-family:'Fraunces',serif; font-weight:600; font-size:1.35rem; display:block;}
+  .spot-hint span{font-size:.92rem; color:rgba(255,255,255,.82);}
+  .spot-hint .lantern{font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--miel-clara); white-space:nowrap;}
+
+  /* miel medicinal */
+  .miel-block{display:grid; grid-template-columns:.9fr 1.1fr; gap:48px; align-items:center; margin-top:64px;}
+  .miel-block .miel-img{border-radius:24px; overflow:hidden; box-shadow:0 26px 54px -26px rgba(60,40,10,.55); aspect-ratio:4/5;}
+  .miel-block .miel-img img{width:100%; height:100%; object-fit:cover;}
+  .miel-block h3{font-size:clamp(1.5rem,2.6vw,2.1rem); color:var(--verde-oscuro); margin-bottom:16px;}
+  .miel-block p{color:var(--texto-suave); font-size:1.04rem; margin-bottom:26px;}
+  .stat-row{display:flex; gap:40px; flex-wrap:wrap;}
+  .stat strong{display:block; font-family:'Fraunces',serif; font-size:2.6rem; color:var(--miel-oscura); line-height:1;}
+  .stat span{font-size:.86rem; color:var(--texto-suave); margin-top:6px; display:block; max-width:16ch;}
+
+  /* ---------- RESCATE (split) ---------- */
+  .rescate{background:var(--verde-oscuro); color:#eae2cf; overflow:hidden;}
+  .rescate .container{display:grid; grid-template-columns:1.05fr .95fr; gap:60px; align-items:center;}
+  .rescate .section-tag{color:var(--miel-clara);}
+  .rescate h2{color:#fff; font-size:clamp(1.95rem,3.4vw,2.8rem);}
+  .rescate p{color:#cdd4c1; margin-top:18px; font-size:1.06rem;}
+  .rescate .btn-primary{margin-top:30px; background:var(--miel); color:var(--verde-oscuro);}
+  .rescate .btn-primary:hover{background:var(--miel-clara);}
+  .rescate-img{border-radius:26px; overflow:hidden; aspect-ratio:4/5; box-shadow:0 34px 70px -30px rgba(0,0,0,.7);}
+  .rescate-img img{width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease);}
+  .rescate-img:hover img{transform:scale(1.05);}
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{background:var(--miel-oscura); color:var(--miel-clara); padding:20px 0; overflow:hidden; white-space:nowrap;}
+  .marquee-track{display:inline-block; animation:marq 26s linear infinite; font-family:'Fraunces',serif; font-style:italic; font-size:1.3rem;}
+  .marquee-track span{margin:0 26px; opacity:.9;}
+  .marquee-track span::after{content:'·'; margin-left:52px; color:var(--miel);}
+  @keyframes marq{to{transform:translateX(-50%);}}
+
+  /* ---------- EDUCACIÓN ---------- */
+  .educacion{background:var(--panal);}
+  .edu-layout{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;}
+  .edu-img{border-radius:26px; overflow:hidden; aspect-ratio:4/5; box-shadow:0 26px 54px -26px rgba(60,40,10,.5);}
+  .edu-img img{width:100%; height:100%; object-fit:cover;}
+  .edu-cards{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  .edu-card{background:#fff; border-radius:18px; padding:24px 22px; box-shadow:0 14px 32px -20px rgba(60,40,10,.3); transition:transform .3s var(--ease);}
+  .edu-card:hover{transform:translateY(-5px);}
+  .edu-card .n{font-family:'Fraunces',serif; font-size:1.5rem; color:var(--miel); font-weight:600;}
+  .edu-card h3{color:var(--verde-oscuro); font-size:1.04rem; margin:8px 0 6px;}
+  .edu-card p{color:var(--texto-suave); font-size:.9rem;}
+
+  /* ---------- PERMACULTURA ---------- */
+  .permacultura{position:relative; color:#fff; overflow:hidden; padding:0;}
+  .perma-bg{position:absolute; inset:0; z-index:0;}
+  .perma-bg img{width:100%; height:100%; object-fit:cover;}
+  .permacultura::after{content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(120deg, rgba(20,28,14,.85) 0%, rgba(20,28,14,.55) 50%, rgba(20,28,14,.2) 100%);}
+  .perma-inner{position:relative; z-index:2; max-width:1120px; margin:0 auto; padding:clamp(90px,12vw,150px) 24px;}
+  .perma-inner .section-tag{color:var(--miel-clara);}
+  .perma-inner h2{color:#fff; font-size:clamp(1.95rem,3.4vw,2.8rem); max-width:16ch;}
+  .perma-inner p{color:rgba(255,255,255,.88); font-size:1.08rem; max-width:52ch; margin-top:18px;}
+  .perma-tags{display:flex; gap:12px; flex-wrap:wrap; margin-top:30px;}
+  .perma-tags span{border:1px solid rgba(255,255,255,.35); padding:9px 18px; border-radius:100px; font-size:.86rem; font-weight:700; color:#fff;}
+
+  /* ---------- VISÍTANOS ---------- */
+  .visitanos{position:relative; color:#fff; padding:0; overflow:hidden;}
+  .visita-bg{position:absolute; inset:0; z-index:0;}
+  .visita-bg img{width:100%; height:100%; object-fit:cover;}
+  .visitanos::after{content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(to top, rgba(16,22,10,.8), rgba(16,22,10,.35));}
+  .visita-inner{position:relative; z-index:2; max-width:1120px; margin:0 auto; padding:clamp(90px,12vw,150px) 24px; text-align:center;}
+  .visita-inner h2{color:#fff; font-size:clamp(2rem,3.6vw,2.9rem);}
+  .visita-inner p{color:rgba(255,255,255,.9); font-size:1.1rem; max-width:48ch; margin:16px auto 0;}
+
+  /* ---------- CONTACTO ---------- */
+  .contacto{background:linear-gradient(160deg, var(--miel-oscura), #5f340c); color:#fff; text-align:center;}
+  .contacto .section-head{margin:0 auto 30px; text-align:center;}
+  .contacto .section-head p{color:#f2ddb9;}
+  .contacto .section-tag{color:var(--miel-clara);}
+  .contacto .btn-primary{background:#fff; color:var(--miel-oscura); font-size:1.05rem; padding:18px 36px;}
+  .contacto .btn-primary:hover{background:var(--panal);}
+  .contact-actions{display:flex; gap:15px; justify-content:center; flex-wrap:wrap; margin-top:6px;}
+  .btn-outline{
+    border:1.6px solid rgba(255,255,255,.5); color:#fff; padding:17px 32px; border-radius:100px;
+    font-weight:800; font-size:1.02rem; display:inline-flex; align-items:center; will-change:transform;
+    transition:background .25s var(--ease), border-color .25s;
+  }
+  .btn-outline:hover{background:rgba(255,255,255,.12); border-color:#fff;}
+  .contact-line{margin-top:26px; font-size:1rem; color:#f6e6c8;}
+  .contact-line a{font-weight:700; border-bottom:1px solid rgba(246,230,200,.4); transition:border-color .2s;}
+  .contact-line a:hover{border-color:#f6e6c8;}
+  .social-row{display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:34px;}
+  .social-pill{
+    padding:13px 26px; border-radius:100px; font-weight:700; font-size:.92rem; color:#fff;
+    transition:transform .25s var(--ease); will-change:transform;
+  }
+  .social-pill:hover{transform:translateY(-3px);}
+  .contacto .note{margin-top:30px; font-size:.85rem; color:#eec99a;}
+  .contacto .loc{margin-top:8px; font-size:.9rem; color:#f2ddb9;}
+
+  footer{background:var(--verde-oscuro); color:#9fac91; padding:40px 0; text-align:center; font-size:.86rem; position:relative; z-index:2;}
+  footer strong{color:#f4ead0; font-family:'Fraunces',serif;}
+  footer .fnote{margin-top:8px; opacity:.7; font-size:.8rem;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    .nav-links{display:none;}
+    .mision-grid{grid-template-columns:1fr;}
+    .abejas-grid{grid-template-columns:repeat(2,1fr);}
+    .miel-block{grid-template-columns:1fr; gap:30px;}
+    .rescate .container{grid-template-columns:1fr; gap:34px;}
+    .rescate-img{order:-1; aspect-ratio:16/11;}
+    .edu-layout{grid-template-columns:1fr; gap:30px;}
+    .edu-img{order:-1; aspect-ratio:16/11;}
+    .edu-cards{grid-template-columns:1fr 1fr;}
+    .spotlight-wrap{aspect-ratio:4/3; cursor:default;}
+  }
+  @media (max-width:480px){
+    .edu-cards{grid-template-columns:1fr;}
+    .abejas-grid{grid-template-columns:1fr 1fr;}
+    .stat-row{gap:26px;}
+  }
+
+  /* ---------- REDUCED MOTION ---------- */
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal-up,.blur-lines .word{opacity:1 !important; transform:none !important; filter:none !important; transition:none !important;}
+    .marquee-track{animation:none;}
+    .scroll-cue::after{animation:none;}
+    .spot-reveal{-webkit-mask-image:none; mask-image:none; opacity:.35;}
+  }
+</style>
+</head>
+<body>
+
+<!-- grain global -->
+<svg class="grain" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <filter id="grainFilter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  <rect width="100%" height="100%" filter="url(#grainFilter)"/>
+</svg>
+
+<header id="header">
+  <nav>
+    <a href="#top" class="logo">Apiyauya <span>· santuario de abejas</span></a>
+    <div class="nav-links">
+      <a href="#mision">Misión</a>
+      <a href="#abejas">Las abejas</a>
+      <a href="#rescate">Rescate</a>
+      <a href="#educacion">Educación</a>
+      <a href="#visitanos">Visítanos</a>
+    </div>
+    <a href="#contacto" class="nav-cta">Contáctanos</a>
+  </nav>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="top">
+  <div class="hero-bg" id="heroBg">
+    <img src="assets/hero-santuario.webp" alt="Rancho santuario de abejas Apiyauya al amanecer, con colmenas entre vegetación tropical en Medellín de Bravo, Veracruz" fetchpriority="high" width="1672" height="941">
+  </div>
+  <div class="hero-inner">
+    <span class="eyebrow liquid-glass">🐝 Medellín de Bravo, Veracruz</span>
+    <h1 class="blur-lines">Somos <em>protectores</em> de las abejas.</h1>
+    <p class="lead reveal-up">Apiyauya —del huichol, "protectores de las abejas"— es un rancho de permacultura dedicado al rescate y cuidado de abejas nativas, la educación ambiental y la vida silvestre de Veracruz.</p>
+    <div class="hero-ctas reveal-up">
+      <a href="#mision" class="btn-primary magnetic">Conoce el santuario ↓</a>
+      <a href="#visitanos" class="btn-secondary liquid-glass magnetic">Cómo visitarnos</a>
+    </div>
+  </div>
+  <div class="scroll-cue">Baja al santuario</div>
+</section>
+
+<!-- ===================== MISIÓN ===================== -->
+<section class="mision" id="mision">
+  <div class="container">
+    <div class="mision-text">
+      <span class="section-tag reveal-up">Quiénes somos</span>
+      <h2 class="blur-lines" style="font-size:clamp(1.95rem,3.6vw,2.9rem); color:var(--verde-oscuro);">Un santuario familiar nacido para cuidar lo vivo</h2>
+      <p class="reveal-up" style="color:var(--texto-suave); margin-top:16px; font-size:1.07rem;">Apiyauya surgió de la necesidad de crear un pequeño refugio para las abejas. Hoy es un proyecto familiar, impulsado por Mariana Torroella Torres y su familia, que integra la conservación con prácticas de permacultura reales.</p>
+      <p class="note reveal-up">El rancho también da refugio a monos araña y suma trabajo previo en conservación de coral: la protección de la vida silvestre es parte de su forma de habitar la tierra.</p>
+    </div>
+    <div class="mision-grid">
+      <div class="card tilt reveal-up">
+        <div class="icon">🐝</div>
+        <h3>Conservación de abejas</h3>
+        <p>Cuidamos cuatro especies —la Apis mellifera y tres meliponas nativas sin aguijón— como pilar de la polinización y la vida silvestre de la región.</p>
+      </div>
+      <div class="card tilt reveal-up">
+        <div class="icon">🤲</div>
+        <h3>Rescate de colonias</h3>
+        <p>Cuando una colonia silvestre aparece donde no debería, vamos por ella y le damos una nueva oportunidad de vida dentro del santuario.</p>
+      </div>
+      <div class="card tilt reveal-up">
+        <div class="icon">🌱</div>
+        <h3>Permacultura aplicada</h3>
+        <p>Huertos, árboles nativos, composta y casas para abejas: el rancho funciona como un sistema vivo donde cada pieza trabaja en conjunto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LAS ABEJAS + SPOTLIGHT ===================== -->
+<section class="abejas" id="abejas">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <span class="section-tag">Las abejas de Apiyauya</span>
+      <h2>Cuatro especies bajo nuestro cuidado</h2>
+      <p>Combinamos la Apis mellifera con tres especies nativas de meliponas —abejas sin aguijón— fundamentales para la polinización de los ecosistemas veracruzanos.</p>
+    </div>
+
+    <div class="abejas-grid">
+      <div class="abeja-card reveal-up"><div class="num">01</div><h4>Apis mellifera</h4><p>Abeja europea, productora de miel</p></div>
+      <div class="abeja-card reveal-up"><div class="num">02</div><h4>Melipona nativa</h4><p>Sin aguijón · polinizadora clave</p></div>
+      <div class="abeja-card reveal-up"><div class="num">03</div><h4>Melipona nativa</h4><p>Sin aguijón · en conservación</p></div>
+      <div class="abeja-card reveal-up"><div class="num">04</div><h4>Melipona nativa</h4><p>Sin aguijón · endémica de la región</p></div>
+    </div>
+
+    <!-- Spotlight de descubrimiento -->
+    <div class="spotlight-wrap reveal-up" id="spotlight" style="--melipona:url('assets/melipona-colmena.webp')">
+      <div class="spot-layer spot-base"></div>
+      <div class="spot-layer spot-reveal" id="spotReveal"></div>
+      <div class="spot-hint">
+        <div>
+          <strong>Asómate al interior de la colmena</strong>
+          <span>Mueve el cursor sobre la imagen para iluminar la colonia de melipona.</span>
+        </div>
+        <div class="lantern">🔦 pasa el cursor</div>
+      </div>
+    </div>
+
+    <!-- Miel medicinal -->
+    <div class="miel-block">
+      <div class="miel-img reveal-up"><img src="assets/frasco-miel.webp" alt="Frasco de miel de abeja melipona, de producción muy baja y valor medicinal" loading="lazy" width="1000" height="1245"></div>
+      <div>
+        <span class="section-tag reveal-up">Miel de melipona</span>
+        <h3 class="reveal-up">Una miel medicinal, rara por naturaleza</h3>
+        <p class="reveal-up">Por el tipo de flor que visitan, la miel de nuestras meliponas tiene propiedades cicatrizantes y antiinflamatorias, y ayuda a subir las defensas. Cada colonia produce apenas 1 a 2 litros al año — por eso es tan valiosa.</p>
+        <div class="stat-row reveal-up">
+          <div class="stat"><strong data-count="4">0</strong><span>especies bajo cuidado</span></div>
+          <div class="stat"><strong>1&ndash;2 L</strong><span>de miel al año por colonia</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RESCATE ===================== -->
+<section class="rescate" id="rescate">
+  <div class="container">
+    <div>
+      <span class="section-tag reveal-up">Trabajo de campo</span>
+      <h2 class="reveal-up">Rescatamos colonias, una a una</h2>
+      <p class="reveal-up">Cuando una colonia silvestre aparece donde no debería —una pared, un árbol a punto de talarse, un techo— vamos a rescatarla. Es trabajo real: calor, muchas horas, riesgo de picaduras. A cambio, la colonia recibe una nueva oportunidad de vida en el santuario.</p>
+      <a href="#contacto" class="btn-primary magnetic reveal-up">¿Tienes una colonia que rescatar? Escríbenos</a>
+    </div>
+    <div class="rescate-img reveal-up"><img src="assets/manos-rescate.webp" alt="Manos manejando con cuidado un panal durante el rescate de una colonia de abejas" loading="lazy" width="1200" height="800"></div>
+  </div>
+</section>
+
+<!-- marquee -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>protectores de las abejas</span><span>rescate de colonias</span><span>educación ambiental</span><span>permacultura viva</span><span>miel de melipona</span><span>protectores de las abejas</span><span>rescate de colonias</span><span>educación ambiental</span><span>permacultura viva</span><span>miel de melipona</span>
+  </div>
+</div>
+
+<!-- ===================== EDUCACIÓN ===================== -->
+<section class="educacion" id="educacion">
+  <div class="container">
+    <div class="edu-layout">
+      <div class="edu-img reveal-up"><img src="assets/real-siembra.webp" alt="Dos niños sembrando un árbol nativo en el rancho Apiyauya durante una jornada de educación ambiental" loading="lazy" width="640" height="846"></div>
+      <div>
+        <span class="section-tag reveal-up">Educación ambiental</span>
+        <h2 class="reveal-up" style="font-size:clamp(1.9rem,3.4vw,2.7rem); color:var(--verde-oscuro);">Aprender cuidando lo vivo</h2>
+        <p class="reveal-up" style="color:var(--texto-suave); margin:16px 0 30px; font-size:1.05rem;">Compartimos lo que hacemos en el rancho con escuelas, familias y medios que nos visitan: talleres sobre abejas, meliponicultura y conservación, para que el cuidado del entorno se vuelva costumbre.</p>
+        <div class="edu-cards">
+          <div class="edu-card reveal-up"><div class="n">01</div><h3>Visitas al rancho</h3><p>Recorridos para conocer de cerca el manejo de las colmenas y la permacultura en acción.</p></div>
+          <div class="edu-card reveal-up"><div class="n">02</div><h3>Jornadas de siembra</h3><p>Días de reforestación abiertos a la comunidad, en escuelas y colonias de la zona.</p></div>
+          <div class="edu-card reveal-up"><div class="n">03</div><h3>Talleres de meliponicultura</h3><p>Cómo cuidar y convivir con abejas sin aguijón, para familias y curiosos.</p></div>
+          <div class="edu-card reveal-up"><div class="n">04</div><h3>Presencia en medios</h3><p>Recibimos a medios locales que documentan el trabajo de conservación del santuario.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PERMACULTURA ===================== -->
+<section class="permacultura" id="permacultura">
+  <div class="perma-bg"><img src="assets/jardin-permacultura.webp" alt="Jardín de permacultura del rancho con huertos, árboles nativos y vegetación tropical" loading="lazy" width="1536" height="1024"></div>
+  <div class="perma-inner">
+    <span class="section-tag reveal-up">Permacultura</span>
+    <h2 class="reveal-up">El rancho es un sistema vivo</h2>
+    <p class="reveal-up">Huertos sustentables, árboles nativos, composta y vermicomposta, y casas construidas para darle hogar a las abejas. Cada pieza del terreno trabaja en conjunto con las colonias que cuidamos.</p>
+    <div class="perma-tags reveal-up">
+      <span>🌿 Huertos nativos</span><span>♻️ Composta &amp; vermicomposta</span><span>🏠 Casas para abejas</span><span>💧 Suelo vivo</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VISÍTANOS ===================== -->
+<section class="visitanos" id="visitanos">
+  <div class="visita-bg"><img src="assets/panoramica-rancho.webp" alt="Vista panorámica del rancho Apiyauya en la comunidad Juan Alfaro, Medellín de Bravo, Veracruz" loading="lazy" width="1881" height="836"></div>
+  <div class="visita-inner">
+    <span class="section-tag reveal-up" style="color:var(--miel-clara);">Visítanos</span>
+    <h2 class="reveal-up">Te esperamos en el santuario</h2>
+    <p class="reveal-up">Nos encontrarás en la comunidad Juan Alfaro, Medellín de Bravo, Veracruz — a poca distancia de Veracruz y Boca del Río. Ven a conocer a las abejas, el huerto y el trabajo de rescate.</p>
+  </div>
+</section>
+
+<!-- ===================== CONTACTO ===================== -->
+<section class="contacto" id="contacto">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <span class="section-tag">Súmate</span>
+      <h2>¿Quieres colaborar o visitarnos?</h2>
+      <p>Escríbenos para agendar una visita o taller, reportar una colonia que rescatar, o sumarte como colaborador del santuario.</p>
+    </div>
+    <div class="contact-actions reveal-up">
+      <a href="#contacto" class="btn-primary magnetic" id="waCta">Escríbenos por WhatsApp</a>
+      <a href="mailto:apiyauya@hotmail.com?subject=Quiero%20conocer%20Apiyauya" class="btn-outline magnetic">Escríbenos por correo</a>
+    </div>
+    <div class="social-row reveal-up">
+      <a href="https://www.instagram.com/apiyauya" target="_blank" rel="noopener" class="social-pill liquid-glass">Instagram</a>
+      <a href="https://www.facebook.com/Apiyauya/" target="_blank" rel="noopener" class="social-pill liquid-glass">Facebook</a>
+    </div>
+    <p class="contact-line reveal-up">📱 <a href="https://wa.me/522291614789">229 161 4789</a> &nbsp;·&nbsp; ✉️ <a href="mailto:apiyauya@hotmail.com">apiyauya@hotmail.com</a></p>
+    <p class="loc">📍 Comunidad Juan Alfaro, Medellín de Bravo, Veracruz, México</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p><strong>Apiyauya</strong> — protectores de las abejas</p>
+    <p class="fnote">Rancho de permacultura y santuario de abejas · Medellín de Bravo, Veracruz</p>
+  </div>
+</footer>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const finePointer = window.matchMedia('(pointer:fine)').matches;
+
+  /* header shadow */
+  const header = document.getElementById('header');
+  addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 20), {passive:true});
+
+  /* blur-in por palabra: partir texto en <span class=word> conservando <em> */
+  document.querySelectorAll('.blur-lines').forEach(el => {
+    const walk = node => {
+      [...node.childNodes].forEach(n => {
+        if (n.nodeType === 3){
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(tok => {
+            if (tok.trim() === ''){ frag.appendChild(document.createTextNode(tok)); return; }
+            const s = document.createElement('span'); s.className='word'; s.textContent=tok; frag.appendChild(s);
+          });
+          node.replaceChild(frag, n);
+        } else if (n.nodeType === 1){ walk(n); }
+      });
+    };
+    walk(el);
+    el.querySelectorAll('.word').forEach((w,i)=> w.style.transitionDelay = (i*0.09)+'s');
+  });
+
+  /* ---- reveals + counters: IntersectionObserver primario + fallback por scroll/load
+         (robusto ante renderers throttled donde el IO no dispara) ---- */
+  function startCount(el){
+    if(el.dataset.done) return; el.dataset.done='1';
+    const target=+el.dataset.count, t0=performance.now(), dur=1200;
+    const tick=now=>{ const p=Math.min(1,(now-t0)/dur); el.textContent=Math.round((1-Math.pow(1-p,3))*target); if(p<1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  }
+  const revealEls=[...document.querySelectorAll('.reveal-up, .blur-lines')];
+  const countEls=[...document.querySelectorAll('[data-count]')];
+  function sweep(){
+    const h=innerHeight;
+    revealEls.forEach(el=>{ if(!el.classList.contains('in') && el.getBoundingClientRect().top < h*0.9) el.classList.add('in'); });
+    countEls.forEach(el=>{ const r=el.getBoundingClientRect(); if(r.top < h*0.85 && r.bottom>0) startCount(el); });
+  }
+  const io=new IntersectionObserver((ents)=>{ ents.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); }, {threshold:0.12, rootMargin:'-6% 0px'});
+  revealEls.forEach(el=>io.observe(el));
+  const cio=new IntersectionObserver((ents)=>{ ents.forEach(e=>{ if(e.isIntersecting){ startCount(e.target); cio.unobserve(e.target);} }); }, {threshold:0.6});
+  countEls.forEach(el=>cio.observe(el));
+  addEventListener('scroll', sweep, {passive:true});
+  addEventListener('load', sweep);
+  sweep();
+
+  /* hero parallax sutil */
+  const heroBg = document.getElementById('heroBg');
+  if(heroBg && !reduce){
+    addEventListener('scroll', ()=>{
+      const y = scrollY;
+      if(y < innerHeight) heroBg.style.transform = 'translateY('+(y*0.28)+'px)';
+    }, {passive:true});
+  }
+
+  /* botones magnéticos (solo desktop) */
+  if(finePointer && !reduce){
+    document.querySelectorAll('.magnetic').forEach(btn=>{
+      btn.addEventListener('pointermove', e=>{
+        const r = btn.getBoundingClientRect();
+        const mx = e.clientX - r.left - r.width/2, my = e.clientY - r.top - r.height/2;
+        btn.style.transform = 'translate('+(mx*0.32)+'px,'+(my*0.4)+'px)';
+      });
+      btn.addEventListener('pointerleave', ()=> btn.style.transform='');
+    });
+
+    /* tilt 3D en cards */
+    document.querySelectorAll('.tilt').forEach(card=>{
+      card.style.transformStyle='preserve-3d';
+      card.addEventListener('pointermove', e=>{
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX-r.left)/r.width-0.5, py=(e.clientY-r.top)/r.height-0.5;
+        card.style.transform = 'perspective(700px) rotateY('+(px*7)+'deg) rotateX('+(-py*7)+'deg) translateY(-4px)';
+      });
+      card.addEventListener('pointerleave', ()=> card.style.transform='');
+    });
+  }
+
+  /* SPOTLIGHT de descubrimiento */
+  const spot = document.getElementById('spotlight');
+  const reveal = document.getElementById('spotReveal');
+  if(spot && reveal && finePointer && !reduce){
+    let tx=-500, ty=-500, cx=-500, cy=-500, raf=null;
+    const loop = ()=>{
+      cx += (tx-cx)*0.14; cy += (ty-cy)*0.14;
+      reveal.style.setProperty('--mx', cx+'px');
+      reveal.style.setProperty('--my', cy+'px');
+      raf = (Math.abs(tx-cx)>0.5||Math.abs(ty-cy)>0.5) ? requestAnimationFrame(loop) : null;
+    };
+    spot.addEventListener('pointermove', e=>{
+      const r = spot.getBoundingClientRect();
+      tx = e.clientX-r.left; ty = e.clientY-r.top;
+      if(!raf) raf = requestAnimationFrame(loop);
+    });
+    spot.addEventListener('pointerleave', ()=>{ tx=-500; ty=-500; if(!raf) raf=requestAnimationFrame(loop); });
+  }
+
+  /* WhatsApp placeholder: número pendiente de confirmar por el cliente.
+     Cuando se tenga, definir WA_NUMERO (formato 52xxxxxxxxxx) y el CTA se activa solo. */
+  const WA_NUMERO = "522291614789"; // Apiyauya — 229 161 4789 (Veracruz)
+  if(WA_NUMERO){
+    const cta = document.getElementById('waCta');
+    cta.href = 'https://wa.me/'+WA_NUMERO+'?text='+encodeURIComponent('Hola Apiyauya, quiero agendar una visita / colaborar con el santuario.');
+    cta.target = '_blank'; cta.rel='noopener';
+    document.getElementById('waNote').style.display='none';
+  }
+</script>
+
+</body>
+</html>
