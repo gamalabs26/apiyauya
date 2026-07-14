@@ -385,16 +385,21 @@
 
   /* ---------- SCROLLYTELLING: carril horizontal de especies ---------- */
   .beeline{position:relative;}
-  .beeline .beeline-track-outer{position:relative; height:320vh;}          /* alto = distancia de scroll */
-  .beeline .beeline-sticky{
-    position:sticky; top:0; height:100svh; display:flex; flex-direction:column;
-    justify-content:center; overflow:hidden;
+  .beeline .beeline-track-outer{position:relative;}
+  .beeline .beeline-sticky{position:relative;}
+  .beeline-rail{
+    display:flex; gap:26px;
+    padding:8px max(24px,calc((100vw - 1120px)/2)) 26px;
+    overflow-x:auto; scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch; scrollbar-width:none; cursor:grab;
+    overscroll-behavior-x:contain;
   }
-  .beeline .beeline-head{max-width:1120px; margin:0 auto 30px; padding:0 24px; width:100%;}
-  .beeline-rail{display:flex; gap:26px; padding:0 max(24px,calc((100vw - 1120px)/2)); will-change:transform;}
+  .beeline-rail::-webkit-scrollbar{display:none;}
+  .beeline-rail.dragging{cursor:grabbing; scroll-snap-type:none; user-select:none;}
   .bee-panel{
-    flex:0 0 clamp(280px,42vw,460px); border-radius:26px; padding:40px 34px;
-    min-height:min(60vh,440px); display:flex; flex-direction:column; justify-content:space-between;
+    flex:0 0 clamp(280px,38vw,420px); border-radius:26px; padding:40px 34px;
+    min-height:min(56vh,420px); display:flex; flex-direction:column; justify-content:space-between;
+    scroll-snap-align:center;
     background:linear-gradient(160deg,#fff, #fff7e8); border:1.5px solid rgba(138,75,18,.16);
     box-shadow:0 26px 60px -34px rgba(60,40,10,.5); position:relative; overflow:hidden;
   }
@@ -444,17 +449,9 @@
     .rescate-media .rescate-img{position:relative; top:0; max-height:none;}
     .rescate-steps{gap:34px; padding:0;}
     .r-step{opacity:1; transform:none;}
-    /* beeline: degradar a swipe horizontal con scroll-snap */
-    .beeline .beeline-track-outer{height:auto;}
-    .beeline .beeline-sticky{position:static; height:auto; overflow:visible;}
-    .beeline-rail{
-      overflow-x:auto; scroll-snap-type:x mandatory; padding:4px 24px 20px;
-      transform:none !important; -webkit-overflow-scrolling:touch;
-      scrollbar-width:none;
-    }
-    .beeline-rail::-webkit-scrollbar{display:none;}
-    .bee-panel{scroll-snap-align:center; min-height:auto;}
-    .beeline-cue span::after{content:' — desliza →';}
+    /* beeline: en móvil, padding lateral menor y tarjetas más compactas */
+    .beeline-rail{padding:4px 24px 20px;}
+    .bee-panel{min-height:auto;}
     .edu-layout{grid-template-columns:1fr; gap:30px;}
     .edu-img{order:-1; aspect-ratio:16/11;}
     .edu-cards{grid-template-columns:1fr 1fr;}
@@ -615,7 +612,7 @@
             </div>
           </div>
         </div>
-        <div class="beeline-cue"><span>Sigue bajando</span> · las especies avanzan contigo</div>
+        <div class="beeline-cue"><span>← Arrastra o desliza →</span> · explora las 4 especies</div>
       </div>
     </div>
   </div>
@@ -910,18 +907,26 @@
     fillWords.forEach((w,i)=> w.classList.toggle('lit', i < lit));
   }
 
-  /* carril horizontal pinneado de especies */
-  const track = document.getElementById('beelineTrack');
+  /* carril horizontal de especies: scroll nativo + arrastre con mouse */
   const rail = document.getElementById('beelineRail');
-  const bigScreen = () => matchMedia('(min-width:861px)').matches;
-  function updateBeeline(){
-    if(!track || !rail || !bigScreen()){ if(rail) rail.style.transform=''; return; }
-    const rect = track.getBoundingClientRect();
-    const dist = rect.height - innerHeight;
-    let p = (-rect.top) / dist;
-    p = Math.max(0, Math.min(1, p));
-    const travel = rail.scrollWidth - innerWidth;
-    if(travel > 0) rail.style.transform = 'translateX(' + (-p * travel) + 'px)';
+  if(rail){
+    let down=false, startX=0, startLeft=0, moved=false;
+    rail.addEventListener('pointerdown', e=>{
+      if(e.pointerType !== 'mouse') return;          // touch/trackpad usan scroll nativo
+      down=true; moved=false; startX=e.clientX; startLeft=rail.scrollLeft;
+      rail.classList.add('dragging'); rail.setPointerCapture(e.pointerId);
+    });
+    rail.addEventListener('pointermove', e=>{
+      if(!down) return;
+      const dx = e.clientX - startX;
+      if(Math.abs(dx) > 3) moved=true;
+      rail.scrollLeft = startLeft - dx;
+    });
+    const end = ()=>{ down=false; rail.classList.remove('dragging'); };
+    rail.addEventListener('pointerup', end);
+    rail.addEventListener('pointercancel', end);
+    // evitar que un arrastre dispare el click de un enlace dentro de la tarjeta
+    rail.addEventListener('click', e=>{ if(moved){ e.preventDefault(); e.stopPropagation(); } }, true);
   }
 
   /* rescate: paso activo según centro de viewport */
@@ -955,7 +960,7 @@
   function onScrollStory(){
     if(ticking) return; ticking=true;
     requestAnimationFrame(()=>{
-      updateThread(); updateFill(); updateBeeline(); updateSteps(); updateBgParallax();
+      updateThread(); updateFill(); updateSteps(); updateBgParallax();
       ticking=false;
     });
   }
