@@ -3,3 +3,4 @@ _gen/
 _brief/
 assets/ig-src/
 assets/*.png
+!assets/cursor-abeja.png
