@@ -333,6 +333,78 @@
   footer strong{color:#f4ead0; font-family:'Fraunces',serif;}
   footer .fnote{margin-top:8px; opacity:.7; font-size:.8rem;}
 
+  /* ---------- SCROLLYTELLING: hilo de miel (progress) ---------- */
+  .scroll-thread{
+    position:fixed; top:0; left:0; height:3px; z-index:200; width:0;
+    background:linear-gradient(90deg, var(--miel-oscura), var(--miel), var(--miel-clara));
+    box-shadow:0 0 12px rgba(217,142,43,.7); transition:width .08s linear;
+    pointer-events:none;
+  }
+
+  /* ---------- SCROLLYTELLING: manifiesto con iluminación por scroll ---------- */
+  .manifesto{background:var(--verde-oscuro); color:#eae2cf; text-align:center; overflow:hidden;}
+  .manifesto .container{max-width:900px;}
+  .manifesto .m-tag{color:var(--miel-clara); font-weight:800; text-transform:uppercase; letter-spacing:.14em; font-size:.76rem; display:block; margin-bottom:26px;}
+  .scroll-fill{
+    font-family:'Fraunces',serif; font-weight:500; line-height:1.28;
+    font-size:clamp(1.5rem,3.4vw,2.55rem); letter-spacing:-.01em;
+  }
+  .scroll-fill .w{
+    display:inline-block; white-space:pre; color:rgba(234,226,207,.16);
+    transition:color .3s var(--ease), filter .3s var(--ease);
+  }
+  .scroll-fill .w.lit{color:#f6ecd4;}
+  .scroll-fill .w em{font-style:italic; color:inherit;}
+  .scroll-fill .w.lit em{color:var(--miel-clara);}
+
+  /* ---------- SCROLLYTELLING: carril horizontal de especies ---------- */
+  .beeline{position:relative;}
+  .beeline .beeline-track-outer{position:relative; height:320vh;}          /* alto = distancia de scroll */
+  .beeline .beeline-sticky{
+    position:sticky; top:0; height:100svh; display:flex; flex-direction:column;
+    justify-content:center; overflow:hidden;
+  }
+  .beeline .beeline-head{max-width:1120px; margin:0 auto 30px; padding:0 24px; width:100%;}
+  .beeline-rail{display:flex; gap:26px; padding:0 max(24px,calc((100vw - 1120px)/2)); will-change:transform;}
+  .bee-panel{
+    flex:0 0 clamp(280px,42vw,460px); border-radius:26px; padding:40px 34px;
+    min-height:min(60vh,440px); display:flex; flex-direction:column; justify-content:space-between;
+    background:linear-gradient(160deg,#fff, #fff7e8); border:1.5px solid rgba(138,75,18,.16);
+    box-shadow:0 26px 60px -34px rgba(60,40,10,.5); position:relative; overflow:hidden;
+  }
+  .bee-panel::before{
+    content:''; position:absolute; right:-40px; top:-40px; width:180px; height:180px;
+    background:radial-gradient(circle, rgba(244,200,105,.4), transparent 70%); pointer-events:none;
+  }
+  .bee-panel .b-num{font-family:'Fraunces',serif; font-size:clamp(3.4rem,7vw,5.4rem); color:var(--miel); font-weight:600; line-height:.9;}
+  .bee-panel h3{font-size:clamp(1.35rem,2.4vw,1.9rem); color:var(--verde-oscuro); margin-top:auto;}
+  .bee-panel .b-sci{font-style:italic; color:var(--miel-oscura); font-weight:600; font-size:.98rem; margin-top:6px;}
+  .bee-panel p{color:var(--texto-suave); font-size:1rem; margin-top:14px;}
+  .bee-panel .b-tag{
+    align-self:flex-start; margin-top:20px; padding:7px 15px; border-radius:100px; font-size:.76rem;
+    font-weight:800; letter-spacing:.05em; text-transform:uppercase; background:var(--panal); color:var(--miel-oscura);
+  }
+  .beeline-cue{max-width:1120px; margin:22px auto 0; padding:0 24px; width:100%; font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; color:var(--texto-suave);}
+  .beeline-cue span{color:var(--miel-oscura); font-weight:800;}
+
+  /* ---------- SCROLLYTELLING: rescate sticky (media fija + pasos) ---------- */
+  .rescate .container{align-items:stretch;}
+  .rescate-media{position:relative;}
+  .rescate-media .rescate-img{position:sticky; top:calc(50vh - 30vh); max-height:60vh;}
+  .rescate-steps{display:flex; flex-direction:column; gap:min(9vh,90px); padding:8vh 0;}
+  .r-step{opacity:.34; transform:translateY(18px); transition:opacity .5s var(--ease), transform .5s var(--ease);}
+  .r-step.active{opacity:1; transform:translateY(0);}
+  .r-step .r-k{font-family:'Fraunces',serif; font-size:1.5rem; color:var(--miel-clara); font-weight:600;}
+  .r-step h3{color:#fff; font-size:clamp(1.3rem,2.4vw,1.85rem); margin:8px 0 12px;}
+  .r-step p{color:#cdd4c1; font-size:1.04rem; margin-top:0;}
+
+  /* ---------- clip-path reveal direccional en imágenes ---------- */
+  .clip-reveal{clip-path:inset(0 0 100% 0); transition:clip-path 1.05s var(--ease);}
+  .clip-reveal.in{clip-path:inset(0 0 0 0);}
+
+  /* ---------- parallax de fondos ---------- */
+  .perma-bg, .visita-bg{will-change:transform; top:-8%; height:116%;}
+
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:860px){
     .nav-links{display:none;}
@@ -341,6 +413,21 @@
     .miel-block{grid-template-columns:1fr; gap:30px;}
     .rescate .container{grid-template-columns:1fr; gap:34px;}
     .rescate-img{order:-1; aspect-ratio:16/11;}
+    /* rescate: en móvil la imagen deja de ser sticky y los pasos siempre visibles */
+    .rescate-media .rescate-img{position:relative; top:0; max-height:none;}
+    .rescate-steps{gap:34px; padding:0;}
+    .r-step{opacity:1; transform:none;}
+    /* beeline: degradar a swipe horizontal con scroll-snap */
+    .beeline .beeline-track-outer{height:auto;}
+    .beeline .beeline-sticky{position:static; height:auto; overflow:visible;}
+    .beeline-rail{
+      overflow-x:auto; scroll-snap-type:x mandatory; padding:4px 24px 20px;
+      transform:none !important; -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+    }
+    .beeline-rail::-webkit-scrollbar{display:none;}
+    .bee-panel{scroll-snap-align:center; min-height:auto;}
+    .beeline-cue span::after{content:' — desliza →';}
     .edu-layout{grid-template-columns:1fr; gap:30px;}
     .edu-img{order:-1; aspect-ratio:16/11;}
     .edu-cards{grid-template-columns:1fr 1fr;}
@@ -359,10 +446,16 @@
     .marquee-track{animation:none;}
     .scroll-cue::after{animation:none;}
     .spot-reveal{-webkit-mask-image:none; mask-image:none; opacity:.35;}
+    .scroll-fill .w{color:#f6ecd4;}
+    .clip-reveal{clip-path:none;}
+    .r-step{opacity:1; transform:none;}
   }
 </style>
 </head>
 <body>
+
+<!-- hilo de miel: progreso de scroll -->
+<div class="scroll-thread" id="scrollThread" aria-hidden="true"></div>
 
 <!-- grain global -->
 <svg class="grain" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -399,6 +492,14 @@
     </div>
   </div>
   <div class="scroll-cue">Baja al santuario</div>
+</section>
+
+<!-- ===================== MANIFIESTO (texto iluminado por scroll) ===================== -->
+<section class="manifesto" id="manifiesto">
+  <div class="container">
+    <span class="m-tag">Nuestra razón de ser</span>
+    <p class="scroll-fill">Cada colonia que rescatamos es una <em>oportunidad de vida</em> devuelta al ecosistema. Cuidamos a las abejas porque, sin ellas, se apaga todo lo demás.</p>
+  </div>
 </section>
 
 <!-- ===================== MISIÓN ===================== -->
@@ -438,14 +539,56 @@
       <h2>Cuatro especies bajo nuestro cuidado</h2>
       <p>Combinamos la Apis mellifera con tres especies nativas de meliponas —abejas sin aguijón— fundamentales para la polinización de los ecosistemas veracruzanos.</p>
     </div>
+  </div>
 
-    <div class="abejas-grid">
-      <div class="abeja-card reveal-up"><div class="num">01</div><h4>Apis mellifera</h4><p>Abeja europea, productora de miel</p></div>
-      <div class="abeja-card reveal-up"><div class="num">02</div><h4>Melipona nativa</h4><p>Sin aguijón · polinizadora clave</p></div>
-      <div class="abeja-card reveal-up"><div class="num">03</div><h4>Melipona nativa</h4><p>Sin aguijón · en conservación</p></div>
-      <div class="abeja-card reveal-up"><div class="num">04</div><h4>Melipona nativa</h4><p>Sin aguijón · endémica de la región</p></div>
+  <!-- Carril horizontal pinneado: recorre las 4 especies con el scroll -->
+  <div class="beeline">
+    <div class="beeline-track-outer" id="beelineTrack">
+      <div class="beeline-sticky">
+        <div class="beeline-rail" id="beelineRail">
+          <div class="bee-panel">
+            <div class="b-num">01</div>
+            <div>
+              <h3>Apis mellifera</h3>
+              <div class="b-sci">La abeja de la miel</div>
+              <p>La abeja europea que casi todos conocemos: productora de miel y una de las polinizadoras más incansables del rancho.</p>
+              <span class="b-tag">Productora de miel</span>
+            </div>
+          </div>
+          <div class="bee-panel">
+            <div class="b-num">02</div>
+            <div>
+              <h3>Melipona nativa</h3>
+              <div class="b-sci">Abeja sin aguijón</div>
+              <p>Endémica de la región, poliniza flores que otras abejas no alcanzan. Su miel es rara y de valor medicinal.</p>
+              <span class="b-tag">Polinizadora clave</span>
+            </div>
+          </div>
+          <div class="bee-panel">
+            <div class="b-num">03</div>
+            <div>
+              <h3>Melipona nativa</h3>
+              <div class="b-sci">Abeja sin aguijón</div>
+              <p>Una segunda especie meliponina bajo conservación en el santuario, protegida colonia por colonia.</p>
+              <span class="b-tag">En conservación</span>
+            </div>
+          </div>
+          <div class="bee-panel">
+            <div class="b-num">04</div>
+            <div>
+              <h3>Melipona nativa</h3>
+              <div class="b-sci">Abeja sin aguijón</div>
+              <p>Endémica de Veracruz y esencial para el equilibrio del ecosistema local: cada colmena cuenta.</p>
+              <span class="b-tag">Endémica</span>
+            </div>
+          </div>
+        </div>
+        <div class="beeline-cue"><span>Sigue bajando</span> · las especies avanzan contigo</div>
+      </div>
     </div>
+  </div>
 
+  <div class="container">
     <!-- Spotlight de descubrimiento -->
     <div class="spotlight-wrap reveal-up" id="spotlight" style="--melipona:url('assets/melipona-colmena.webp')">
       <div class="spot-layer spot-base"></div>
@@ -461,7 +604,7 @@
 
     <!-- Miel medicinal -->
     <div class="miel-block">
-      <div class="miel-img reveal-up"><img src="assets/frasco-miel.webp" alt="Frasco de miel de abeja melipona, de producción muy baja y valor medicinal" loading="lazy" width="1000" height="1245"></div>
+      <div class="miel-img reveal-up clip-reveal"><img src="assets/frasco-miel.webp" alt="Frasco de miel de abeja melipona, de producción muy baja y valor medicinal" loading="lazy" width="1000" height="1245"></div>
       <div>
         <span class="section-tag reveal-up">Miel de melipona</span>
         <h3 class="reveal-up">Una miel medicinal, rara por naturaleza</h3>
@@ -478,13 +621,32 @@
 <!-- ===================== RESCATE ===================== -->
 <section class="rescate" id="rescate">
   <div class="container">
-    <div>
-      <span class="section-tag reveal-up">Trabajo de campo</span>
-      <h2 class="reveal-up">Rescatamos colonias, una a una</h2>
-      <p class="reveal-up">Cuando una colonia silvestre aparece donde no debería —una pared, un árbol a punto de talarse, un techo— vamos a rescatarla. Es trabajo real: calor, muchas horas, riesgo de picaduras. A cambio, la colonia recibe una nueva oportunidad de vida en el santuario.</p>
+    <div class="rescate-steps">
+      <div>
+        <span class="section-tag reveal-up">Trabajo de campo</span>
+        <h2 class="reveal-up">Rescatamos colonias, una a una</h2>
+        <p class="reveal-up">Cuando una colonia silvestre aparece donde no debería —una pared, un árbol a punto de talarse, un techo— vamos a rescatarla. Es trabajo real: calor, muchas horas, riesgo de picaduras. A cambio, la colonia recibe una nueva oportunidad de vida en el santuario.</p>
+      </div>
+      <div class="r-step" id="rstep-0">
+        <div class="r-k">01</div>
+        <h3>Localizamos la colonia</h3>
+        <p>Alguien reporta un enjambre en una pared, un techo o un árbol a punto de talarse. Vamos al sitio y evaluamos cómo intervenir sin dañar a las abejas.</p>
+      </div>
+      <div class="r-step" id="rstep-1">
+        <div class="r-k">02</div>
+        <h3>Extraemos con cuidado</h3>
+        <p>Con paciencia y sin químicos, retiramos el panal y a la reina. Cada movimiento cuenta: si la reina sobrevive, la colonia entera se salva.</p>
+      </div>
+      <div class="r-step" id="rstep-2">
+        <div class="r-k">03</div>
+        <h3>Le damos un nuevo hogar</h3>
+        <p>La colonia se reubica en el santuario, donde sigue creciendo, poliniza el rancho y suma a la conservación de la especie.</p>
+      </div>
       <a href="#contacto" class="btn-primary magnetic reveal-up">¿Tienes una colonia que rescatar? Escríbenos</a>
     </div>
-    <div class="rescate-img reveal-up"><img src="assets/manos-rescate.webp" alt="Manos manejando con cuidado un panal durante el rescate de una colonia de abejas" loading="lazy" width="1200" height="800"></div>
+    <div class="rescate-media">
+      <div class="rescate-img clip-reveal"><img src="assets/manos-rescate.webp" alt="Manos manejando con cuidado un panal durante el rescate de una colonia de abejas" loading="lazy" width="1200" height="800"></div>
+    </div>
   </div>
 </section>
 
@@ -499,7 +661,7 @@
 <section class="educacion" id="educacion">
   <div class="container">
     <div class="edu-layout">
-      <div class="edu-img reveal-up"><img src="assets/real-siembra.webp" alt="Dos niños sembrando un árbol nativo en el rancho Apiyauya durante una jornada de educación ambiental" loading="lazy" width="640" height="846"></div>
+      <div class="edu-img reveal-up clip-reveal"><img src="assets/real-siembra.webp" alt="Dos niños sembrando un árbol nativo en el rancho Apiyauya durante una jornada de educación ambiental" loading="lazy" width="640" height="846"></div>
       <div>
         <span class="section-tag reveal-up">Educación ambiental</span>
         <h2 class="reveal-up" style="font-size:clamp(1.9rem,3.4vw,2.7rem); color:var(--verde-oscuro);">Aprender cuidando lo vivo</h2>
@@ -600,7 +762,7 @@
     const tick=now=>{ const p=Math.min(1,(now-t0)/dur); el.textContent=Math.round((1-Math.pow(1-p,3))*target); if(p<1) requestAnimationFrame(tick); };
     requestAnimationFrame(tick);
   }
-  const revealEls=[...document.querySelectorAll('.reveal-up, .blur-lines')];
+  const revealEls=[...document.querySelectorAll('.reveal-up, .blur-lines, .clip-reveal')];
   const countEls=[...document.querySelectorAll('[data-count]')];
   function sweep(){
     const h=innerHeight;
@@ -666,6 +828,104 @@
     spot.addEventListener('pointerleave', ()=>{ tx=-500; ty=-500; if(!raf) raf=requestAnimationFrame(loop); });
   }
 
+  /* ================= SCROLLYTELLING ================= */
+
+  /* hilo de miel: progreso global de scroll */
+  const thread = document.getElementById('scrollThread');
+  function updateThread(){
+    const h = document.documentElement;
+    const max = h.scrollHeight - innerHeight;
+    thread.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%';
+  }
+
+  /* manifiesto: iluminar palabras según avanza el scroll */
+  const fillEl = document.querySelector('.scroll-fill');
+  let fillWords = [];
+  if(fillEl){
+    const walkFill = node => {
+      [...node.childNodes].forEach(n => {
+        if(n.nodeType === 3){
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(tok => {
+            if(tok.trim() === ''){ frag.appendChild(document.createTextNode(tok)); return; }
+            const s = document.createElement('span'); s.className='w'; s.textContent=tok; frag.appendChild(s);
+          });
+          node.replaceChild(frag, n);
+        } else if(n.nodeType === 1){
+          const s = document.createElement('span'); s.className='w';
+          while(n.firstChild) s.appendChild(n.firstChild);
+          n.appendChild(s); // conserva <em> dentro del span iluminable
+        }
+      });
+    };
+    walkFill(fillEl);
+    fillWords = [...fillEl.querySelectorAll('.w')];
+  }
+  function updateFill(){
+    if(!fillWords.length) return;
+    const r = fillEl.getBoundingClientRect();
+    // progreso: 0 cuando el bloque entra por abajo, 1 cuando su centro cruza el 35% superior
+    const start = innerHeight * 0.85, end = innerHeight * 0.35;
+    let p = (start - r.top) / (start - end);
+    p = Math.max(0, Math.min(1, p));
+    const lit = Math.round(p * fillWords.length);
+    fillWords.forEach((w,i)=> w.classList.toggle('lit', i < lit));
+  }
+
+  /* carril horizontal pinneado de especies */
+  const track = document.getElementById('beelineTrack');
+  const rail = document.getElementById('beelineRail');
+  const bigScreen = () => matchMedia('(min-width:861px)').matches;
+  function updateBeeline(){
+    if(!track || !rail || !bigScreen()){ if(rail) rail.style.transform=''; return; }
+    const rect = track.getBoundingClientRect();
+    const dist = rect.height - innerHeight;
+    let p = (-rect.top) / dist;
+    p = Math.max(0, Math.min(1, p));
+    const travel = rail.scrollWidth - innerWidth;
+    if(travel > 0) rail.style.transform = 'translateX(' + (-p * travel) + 'px)';
+  }
+
+  /* rescate: paso activo según centro de viewport */
+  const rSteps = [...document.querySelectorAll('.r-step')];
+  function updateSteps(){
+    if(!rSteps.length) return;
+    const mid = innerHeight * 0.5;
+    let best=null, bestD=Infinity;
+    rSteps.forEach(s=>{
+      const r=s.getBoundingClientRect();
+      const c=r.top + r.height/2;
+      const d=Math.abs(c-mid);
+      if(r.bottom>0 && r.top<innerHeight && d<bestD){ bestD=d; best=s; }
+    });
+    rSteps.forEach(s=> s.classList.toggle('active', s===best));
+  }
+
+  /* parallax en fondos de permacultura y visítanos */
+  const bgLayers = [...document.querySelectorAll('.perma-bg, .visita-bg')];
+  function updateBgParallax(){
+    if(reduce) return;
+    bgLayers.forEach(l=>{
+      const host = l.parentElement.getBoundingClientRect();
+      if(host.bottom < 0 || host.top > innerHeight) return;
+      const rel = (host.top + host.height/2 - innerHeight/2) / innerHeight;
+      l.style.transform = 'translateY(' + (rel * -46) + 'px)';
+    });
+  }
+
+  let ticking=false;
+  function onScrollStory(){
+    if(ticking) return; ticking=true;
+    requestAnimationFrame(()=>{
+      updateThread(); updateFill(); updateBeeline(); updateSteps(); updateBgParallax();
+      ticking=false;
+    });
+  }
+  addEventListener('scroll', onScrollStory, {passive:true});
+  addEventListener('resize', onScrollStory);
+  addEventListener('load', onScrollStory);
+  onScrollStory();
+
   /* WhatsApp placeholder: número pendiente de confirmar por el cliente.
      Cuando se tenga, definir WA_NUMERO (formato 52xxxxxxxxxx) y el CTA se activa solo. */
   const WA_NUMERO = "522291614789"; // Apiyauya — 229 161 4789 (Veracruz)
@@ -673,7 +933,8 @@
     const cta = document.getElementById('waCta');
     cta.href = 'https://wa.me/'+WA_NUMERO+'?text='+encodeURIComponent('Hola Apiyauya, quiero agendar una visita / colaborar con el santuario.');
     cta.target = '_blank'; cta.rel='noopener';
-    document.getElementById('waNote').style.display='none';
+    const waNote = document.getElementById('waNote');
+    if(waNote) waNote.style.display='none';
   }
 </script>
 
