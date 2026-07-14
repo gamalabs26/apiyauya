@@ -4,3 +4,4 @@ _brief/
 assets/ig-src/
 assets/*.png
 !assets/cursor-abeja.png
+!assets/favicon-abeja.png

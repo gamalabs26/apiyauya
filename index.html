@@ -21,7 +21,7 @@
 <meta name="twitter:description" content="Rescate de abejas nativas, miel medicinal de melipona y educación ambiental en Veracruz.">
 <meta name="twitter:image" content="https://gamalabs26.github.io/apiyauya/assets/og-image.jpg">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%9D%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="assets/favicon-abeja.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -109,9 +109,10 @@
     display:flex; align-items:center; justify-content:space-between;
     padding:15px 24px; max-width:1120px; margin:0 auto;
   }
-  .logo{display:inline-flex; align-items:center; line-height:0;}
-  .logo img{height:48px; width:auto; display:block;}
-  @media (max-width:480px){ .logo img{height:42px;} }
+  .logo{display:inline-flex; align-items:center; gap:11px;}
+  .logo img{height:42px; width:auto; display:block;}
+  .logo .wm{font-family:'Fraunces',serif; font-size:1.5rem; font-weight:600; color:var(--miel-oscura); letter-spacing:.004em; line-height:1;}
+  @media (max-width:480px){ .logo img{height:36px;} .logo .wm{font-size:1.28rem;} }
   .nav-links{display:flex; gap:30px; font-weight:700; font-size:.9rem;}
   .nav-links a{opacity:.78; transition:opacity .2s, color .2s; position:relative;}
   .nav-links a::after{content:''; position:absolute; left:0; bottom:-5px; width:0; height:2px; background:var(--miel); transition:width .3s var(--ease);}
@@ -245,6 +246,13 @@
   .spot-hint strong{font-family:'Fraunces',serif; font-weight:600; font-size:1.35rem; display:block;}
   .spot-hint span{font-size:.92rem; color:rgba(255,255,255,.82);}
   .spot-hint .lantern{font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--miel-clara); white-space:nowrap;}
+  /* touch: sin cursor no hay reveal — mostrar la imagen completa y quitar la instrucción */
+  @media (hover:none){
+    .spot-base{filter:brightness(1) saturate(1.08) contrast(1);}
+    .spot-base::after{background:radial-gradient(circle at 50% 40%, transparent, rgba(16,22,10,.28));}
+    .spot-reveal{display:none;}
+    .spot-hint .spot-sub, .spot-hint .lantern{display:none;}
+  }
 
   /* miel medicinal */
   .miel-block{display:grid; grid-template-columns:.9fr 1.1fr; gap:48px; align-items:center; margin-top:64px;}
@@ -307,6 +315,29 @@
   .visita-inner{position:relative; z-index:2; max-width:1120px; margin:0 auto; padding:clamp(90px,12vw,150px) 24px; text-align:center;}
   .visita-inner h2{color:#fff; font-size:clamp(2rem,3.6vw,2.9rem);}
   .visita-inner p{color:rgba(255,255,255,.9); font-size:1.1rem; max-width:48ch; margin:16px auto 0;}
+  .visita-actions{margin-top:30px; display:flex; justify-content:center;}
+  .visita-map{
+    margin:36px auto 0; max-width:840px; border-radius:22px; overflow:hidden;
+    box-shadow:0 34px 80px -34px rgba(0,0,0,.75); border:3px solid rgba(255,255,255,.55); aspect-ratio:16/9;
+  }
+  .visita-map iframe{width:100%; height:100%; border:0; display:block;}
+
+  /* ---------- FAQ ---------- */
+  .faq{background:var(--panal);}
+  .faq-list{max-width:820px; margin:0 auto;}
+  .faq-item{border-bottom:1px solid rgba(138,75,18,.18);}
+  .faq-item summary{
+    list-style:none; cursor:pointer; padding:24px 46px 24px 4px; position:relative;
+    font-family:'Fraunces',serif; font-size:clamp(1.08rem,2vw,1.3rem); color:var(--verde-oscuro); font-weight:600;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:'+'; position:absolute; right:8px; top:50%; transform:translateY(-50%);
+    font-family:'Nunito Sans',sans-serif; font-size:1.7rem; color:var(--miel); line-height:1;
+    transition:transform .3s var(--ease);
+  }
+  .faq-item[open] summary::after{transform:translateY(-50%) rotate(45deg);}
+  .faq-item p{color:var(--texto-suave); font-size:1.04rem; padding:0 46px 26px 4px; margin:0;}
 
   /* ---------- CONTACTO ---------- */
   .contacto{background:linear-gradient(160deg, var(--miel-oscura), #5f340c); color:#fff; text-align:center;}
@@ -421,8 +452,8 @@
   /* ---------- SCROLLYTELLING: rescate sticky (media fija + pasos) ---------- */
   .rescate .container{align-items:stretch;}
   .rescate-media{position:relative;}
-  .rescate-media .rescate-img{position:sticky; top:calc(50vh - 30vh); max-height:60vh;}
-  .rescate-steps{display:flex; flex-direction:column; gap:min(9vh,90px); padding:8vh 0;}
+  .rescate-media .rescate-img{position:sticky; top:calc(50vh - 33vh); max-height:66vh;}
+  .rescate-steps{display:flex; flex-direction:column; gap:min(8vh,80px); padding:6vh 0;}
   .r-step{opacity:.34; transform:translateY(18px); transition:opacity .5s var(--ease), transform .5s var(--ease);}
   .r-step.active{opacity:1; transform:translateY(0);}
   .r-step .r-k{font-family:'Fraunces',serif; font-size:1.5rem; color:var(--miel-clara); font-weight:600;}
@@ -491,7 +522,7 @@
 
 <header id="header">
   <nav>
-    <a href="#top" class="logo" aria-label="Apiyauya — inicio"><img src="assets/logo-apiyauya.webp" alt="Apiyauya · Diversidad en armonía" width="512" height="432"></a>
+    <a href="#top" class="logo" aria-label="Apiyauya — inicio"><img src="assets/emblema-abeja.webp" alt="" width="624" height="372"><span class="wm">Apiyauya</span></a>
     <div class="nav-links">
       <a href="#mision">Misión</a>
       <a href="#abejas">Las abejas</a>
@@ -587,9 +618,9 @@
           <div class="bee-panel">
             <div class="b-num">02</div>
             <div>
-              <h3>Melipona nativa</h3>
-              <div class="b-sci">Abeja sin aguijón</div>
-              <p>Endémica de la región, poliniza flores que otras abejas no alcanzan. Su miel es rara y de valor medicinal.</p>
+              <h3>Scaptotrigona pectoralis</h3>
+              <div class="b-sci">Abeja nativa sin aguijón</div>
+              <p>Meliponina de la región, poliniza flores que otras abejas no alcanzan. Su miel es rara y de valor medicinal.</p>
               <span class="b-tag">Polinizadora clave</span>
             </div>
           </div>
@@ -597,7 +628,7 @@
             <div class="b-num">03</div>
             <div>
               <h3>Melipona nativa</h3>
-              <div class="b-sci">Abeja sin aguijón</div>
+              <div class="b-sci">Especie en conservación</div>
               <p>Una segunda especie meliponina bajo conservación en el santuario, protegida colonia por colonia.</p>
               <span class="b-tag">En conservación</span>
             </div>
@@ -606,8 +637,8 @@
             <div class="b-num">04</div>
             <div>
               <h3>Melipona nativa</h3>
-              <div class="b-sci">Abeja sin aguijón</div>
-              <p>Endémica de Veracruz y esencial para el equilibrio del ecosistema local: cada colmena cuenta.</p>
+              <div class="b-sci">Endémica de Veracruz</div>
+              <p>Esencial para el equilibrio del ecosistema local: cada colmena que cuidamos cuenta para la región.</p>
               <span class="b-tag">Endémica</span>
             </div>
           </div>
@@ -625,7 +656,7 @@
       <div class="spot-hint">
         <div>
           <strong>Asómate al interior de la colmena</strong>
-          <span>Mueve el cursor sobre la imagen para iluminar la colonia de melipona.</span>
+          <span class="spot-sub">Mueve el cursor sobre la imagen para iluminar la colonia de melipona.</span>
         </div>
         <div class="lantern">🔦 pasa el cursor</div>
       </div>
@@ -642,6 +673,7 @@
           <div class="stat"><strong data-count="4">0</strong><span>especies bajo cuidado</span></div>
           <div class="stat"><strong>1&ndash;2 L</strong><span>de miel al año por colonia</span></div>
         </div>
+        <a href="https://wa.me/522291614789?text=Hola%20Apiyauya%2C%20quiero%20saber%20sobre%20la%20miel%20de%20melipona." target="_blank" rel="noopener" class="btn-primary magnetic reveal-up" style="margin-top:28px;">Pregunta por la miel 🍯</a>
       </div>
     </div>
   </div>
@@ -726,6 +758,44 @@
     <span class="section-tag reveal-up" style="color:var(--miel-clara);">Visítanos</span>
     <h2 class="reveal-up">Te esperamos en el santuario</h2>
     <p class="reveal-up">Nos encontrarás en la comunidad Juan Alfaro, Medellín de Bravo, Veracruz — a poca distancia de Veracruz y Boca del Río. Ven a conocer a las abejas, el huerto y el trabajo de rescate.</p>
+    <div class="visita-actions reveal-up">
+      <a href="https://maps.app.goo.gl/PKUMmLBYWt1DJke9A" target="_blank" rel="noopener" class="btn-primary magnetic">📍 Cómo llegar</a>
+    </div>
+    <div class="visita-map reveal-up">
+      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-96.1557%2C19.0051%2C-96.1397%2C19.0151&layer=mapnik&marker=19.0101016%2C-96.1477394" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación de Apiyauya en Medellín de Bravo, Veracruz"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-head reveal-up" style="margin:0 auto 46px; text-align:center;">
+      <span class="section-tag">Preguntas frecuentes</span>
+      <h2 style="color:var(--verde-oscuro);">Lo que suelen preguntarnos</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item reveal-up">
+        <summary>¿Puedo visitar el santuario?</summary>
+        <p>Sí. Recibimos a escuelas, familias y visitas para conocer las colmenas, el huerto y el trabajo de rescate. Escríbenos por WhatsApp para agendar día y hora.</p>
+      </details>
+      <details class="faq-item reveal-up">
+        <summary>¿Rescatan colonias de abejas?</summary>
+        <p>Sí. Si tienes una colonia silvestre en una pared, un techo o un árbol a punto de talarse, contáctanos: vamos a evaluarla y, cuando es posible, la reubicamos con vida en el santuario.</p>
+      </details>
+      <details class="faq-item reveal-up">
+        <summary>¿Ofrecen talleres?</summary>
+        <p>Sí, damos talleres de meliponicultura y educación ambiental para familias, escuelas y curiosos. Cuéntanos qué buscas y armamos la visita.</p>
+      </details>
+      <details class="faq-item reveal-up">
+        <summary>¿Venden miel de melipona?</summary>
+        <p>La producción es muy limitada —cada colonia da apenas 1 a 2 litros al año— así que la disponibilidad varía. Escríbenos para saber si hay miel disponible.</p>
+      </details>
+      <details class="faq-item reveal-up">
+        <summary>¿Dónde están ubicados?</summary>
+        <p>En la comunidad Juan Alfaro, Medellín de Bravo, Veracruz, a poca distancia de Veracruz y Boca del Río. Arriba encuentras el mapa y el botón “Cómo llegar”.</p>
+      </details>
+    </div>
   </div>
 </section>
 
